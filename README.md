@@ -37,8 +37,8 @@ AGNO Service merupakan middleware orkestrasi neural berbasis tujuan agen yang me
 
 1. Clone repositori:
 ```bash
-git clone [URL_REPOSITORI]
-cd agno-service
+git clone https://github.com/gendonholaholo/daraxbapak.git
+cd daraxbapak
 ```
 
 2. Setup lingkungan virtual:

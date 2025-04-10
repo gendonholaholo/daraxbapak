@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  agno-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - MILVUS_HOST=milvus
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    depends_on:
+      - redis
+      - milvus
+    volumes:
+      - ./src/prompts/templates:/app/src/prompts/templates
+    networks:
+      - agno-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - agno-network
+
+  milvus:
+    image: milvusdb/milvus:v2.3.0
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvus-data:/var/lib/milvus
+    environment:
+      - ETCD_ENDPOINTS=localhost:2379
+      - MINIO_ADDRESS=localhost:9000
+    networks:
+      - agno-network
+
+volumes:
+  redis-data:
+  milvus-data:
+
+networks:
+  agno-network:
+    driver: bridge 
