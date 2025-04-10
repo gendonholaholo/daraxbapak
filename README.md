@@ -1,5 +1,3 @@
-# 📘 README Proyek
-
 ## 🧠 Tujuan Proyek
 
 Penggunaan AGNO Service. AGNO Service merupakan middleware orkestrasi neural berbasis tujuan agen yang mengintegrasikan berbagai model bahasa besar (LLM) dengan kemampuan pencarian semantik untuk menciptakan agen AI yang cerdas dan terkoordinasi. Sistem ini dirancang untuk:
